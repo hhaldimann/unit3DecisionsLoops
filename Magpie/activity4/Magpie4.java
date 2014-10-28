@@ -31,6 +31,7 @@ public class Magpie4
 	public String getResponse(String statement)
 	{
 		String response = "";
+		String trimmed = statement.trim();
 		if (statement.length() == 0)
 		{
 			response = "Say something, please.";
@@ -47,6 +48,38 @@ public class Magpie4
 		{
 			response = "Tell me more about your family.";
 		}
+		else if (statement.indexOf("dog") >= 0
+                || statement.indexOf("cat") >= 0)
+        {
+            response = "Tell me more about your pets.";
+        }
+        else if (statement.indexOf("Mr.") >= 0
+                || statement.indexOf("Mr") >= 0
+                || statement.indexOf("mr") >= 0
+                || statement.indexOf("mr.") >= 0)
+         {
+             response = "He sounds like a good teacher";
+            }
+        else if (statement.indexOf("mrs.") >= 0
+                || statement.indexOf("ms.") >= 0
+                || statement.indexOf("mrs") >= 0
+                || statement.indexOf("ms") >= 0
+                || statement.indexOf("Mrs") >= 0
+                || statement.indexOf("Ms") >= 0
+                || statement.indexOf("Mrs.") >= 0
+                || statement.indexOf("Ms.") >= 0)
+            {
+                response = "She sounds like a good teacher";
+            }
+        else if  (trimmed.length()<1)
+            {
+                response = "Say something, please";
+            }
+        else if (trimmed.length()<4 && trimmed.length()>0)
+            {
+                response = "What does that mean?";
+            }
+        
 
 		// Responses which require transformations
 		else if (findKeyword(statement, "I want to", 0) >= 0)
