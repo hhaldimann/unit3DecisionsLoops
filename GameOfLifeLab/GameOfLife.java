@@ -1,6 +1,7 @@
 import info.gridworld.actor.Actor;
 import info.gridworld.actor.ActorWorld;
 import info.gridworld.actor.Rock;
+import info.gridworld.grid.Grid;
 import info.gridworld.grid.BoundedGrid;
 import info.gridworld.grid.Location;
 
@@ -13,9 +14,6 @@ import info.gridworld.grid.Location;
  */
 public class GameOfLife
 {
-    // the grid of Actors that maintains the state of the game (alive cells contains actors; dead cells do not)
-    private BoundedGrid<Actor> grid;
-    
     // the world comprised of the grid that displays the graphics for the game
     private ActorWorld world;
     
@@ -37,7 +35,7 @@ public class GameOfLife
     public GameOfLife()
     {
         // create the grid, of the specified size, that contains Actors
-        grid = new BoundedGrid<Actor>(ROWS, COLS);
+        BoundedGrid<Actor> grid = new BoundedGrid<Actor>(ROWS, COLS);
         
         // create a world based on the grid
         world = new ActorWorld(grid);
@@ -59,6 +57,10 @@ public class GameOfLife
      */
     private void populateGame()
     {
+        // the grid of Actors that maintains the state of the game
+        //  (alive cells contains actors; dead cells do not)
+        Grid<Actor> grid = world.getGrid();
+        
         // create and add rocks (a type of Actor) to the three intial locations
         Rock rock1 = new Rock();
         Location loc1 = new Location(X1, Y1);
@@ -74,6 +76,27 @@ public class GameOfLife
     }
 
     /**
+     * Generates the next generation based on the rules of the Game of Life and updates the grid
+     * associated with the world
+     *
+     * @pre     the game has been initialized
+     * @post    the world has been populated with a new grid containing the next generation
+     * 
+     */
+    private void createNextGeneration()
+    {
+        /** You will need to read the documentation for the World, Grid, and Location classes
+         *      in order to implement the Game of Life algorithm and leverage the GridWorld framework.
+         */
+        
+        // create the grid, of the specified size, that contains Actors
+        Grid<Actor> grid = world.getGrid();
+        
+        // insert magic here...
+        
+    }
+    
+    /**
      * Returns the actor at the specified row and column. Intended to be used for unit testing.
      *
      * @param   row the row (zero-based index) of the actor to return
@@ -84,7 +107,7 @@ public class GameOfLife
     public Actor getActor(int row, int col)
     {
         Location loc = new Location(row, col);
-        Actor actor = grid.get(loc);
+        Actor actor = world.getGrid().get(loc);
         return actor;
     }
 
