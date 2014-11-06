@@ -18,8 +18,8 @@ public class GameOfLife
     private ActorWorld world;
     
     // the game board will have 5 rows and 5 columns
-    private final int ROWS = 5;
-    private final int COLS = 5;
+    private final int ROWS = 100;
+    private final int COLS = 100;
     
     // constants for the location of the three cells initially alive
     private final int X1 = 0, Y1 = 2;
