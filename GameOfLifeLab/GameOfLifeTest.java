@@ -127,9 +127,9 @@ public class GameOfLifeTest
                 else // else, the cell should be dead; assert that the actor is null
                 {
                     assertNull("expected dead cell at (" + row + ", " + col + ")", cell);
+                 }
             }
-        }
-    }   
+        }   
 
     }   
 }
