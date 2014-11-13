@@ -51,6 +51,10 @@ public class GameOfLife
 
         // display the newly constructed and populated world
         world.show();
+        
+        createNextGeneration();
+        
+        world.show();
 
     }
 
@@ -117,6 +121,7 @@ public class GameOfLife
 
         // create the grid, of the specified size, that contains Actors
         Grid<Actor> grid = world.getGrid();
+        
         BoundedGrid<Actor> grid2 = new BoundedGrid<Actor>(ROWS, COLS);
 
         // insert magic here...
@@ -129,10 +134,15 @@ public class GameOfLife
                 int num = list.size();
                 Actor cell = this.getActor(row,col);
 
-                if (num ==  2 || num == 3 || cell == null && num == 3)
+                if (num ==  2 || num == 3 || (cell == null && num == 3))
                 {
                     grid2.put(loc, new Rock());
-                }                
+                }
+                else
+                {
+                    grid2.put(loc, null);
+                }
+
             }
         }
         world.setGrid(grid2);
@@ -180,6 +190,7 @@ public class GameOfLife
     public static void main(String[] args)
     {
         GameOfLife game = new GameOfLife();
+        
 
     }
 }

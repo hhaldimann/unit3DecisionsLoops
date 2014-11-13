@@ -121,7 +121,6 @@ public class GameOfLifeTest
                         (row == 4 && col == 1) ||
                         (row == 4 && col == 2))
                     {
-                    
                      assertNotNull("expected alive cell at (" + row + ", " + col + ")", cell);
                 }
                 else // else, the cell should be dead; assert that the actor is null
